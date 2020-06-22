@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.sql.SQLOutput;
 import java.util.SortedMap;
 
-public class VerifyTitleTest {
+public class Day_2VerifyTitleTest {
     // 1.Yeni bir class oluşturun : VerifyTitleTest
     // 2. Navigate to google homepage(ana sayfa)
     // 3. Google başlığının(title) "Google" olup olmadığını doğrulayın(verify).
