@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+
 
 public class Day3_LocatorsIntro {
     //Bir class oluşturun: LocatorsIntro
@@ -59,10 +61,39 @@ public class Day3_LocatorsIntro {
         }else {
             System.out.println("FAIL");
         }
-       // 7) Sayfadaki toplam link sayısını bulun.
-       // 8) Sayfadaki bütün Web Elements sayısını bulun. (KENDİM EKLEDİM)
-       // 9) Sayfadan Sign Out (çıkış) yapın
+        //By.partialLinkText
+        //ADDRESSES Link
+        WebElement addressPartialLink = driver.findElement(By.partialLinkText("esse"));
+        String actualAddressPartialLinkText = addressPartialLink.getText();
+        System.out.println("ADRESSES PARTIAL LINK TEST :"+actualAddressPartialLinkText);
+        // Sign out link
+        WebElement signOutPartialLink = driver.findElement(By.partialLinkText("out"));
+        String signOutPartialLinkText = signOutPartialLink.getText();
+        System.out.println(signOutPartialLinkText);
 
+        //Sayfadaki toplam link sayisini bulun ve bu linkleri konsolda yazdirin
+        //findElement(); methodu yalnizca tek bir elementi locate icin kullanilir. String return eder
+        //findElement(); methodu birden fazla element return eder. List<WebElement>
 
-    }
+        List<WebElement> listOfWebElement = driver.findElements(By.tagName("a"));
+        System.out.println("Bu web sayfasinda "+listOfWebElement.size()+" tane link vardir.");
+
+        //Linkleri tek tek yazdirin
+        // 3 tane link elementi var. 1. elelementin indexini 0 aliriz
+        System.out.println("1. WEB ELEMENT : "+listOfWebElement.get(0)); // reference verir
+
+        System.out.println("1. LINK TEXT : "+ listOfWebElement.get(0).getText()); // link adini verir
+        System.out.println("2. LINK TEXT : "+ listOfWebElement.get(1).getText()); // 2.link adini verir
+        System.out.println("3. LINK TEXT : "+ listOfWebElement.get(2).getText()); // 3.link (text) adini verir
+
+         // hepsini tek seferde yazdirma
+
+        for (WebElement w: listOfWebElement) {
+            System.out.println(w.getText());
+        }
+        int i =0;
+        for (WebElement w: listOfWebElement) {
+            System.out.println(++i + ". link  : " + w.getText());
+        }
+        }
 }

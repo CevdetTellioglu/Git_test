@@ -57,9 +57,21 @@ public class Day3_LocatorsIntroRV {
         }else {
             System.out.println("FAIL");
         }
-        List<WebElement> links = driver.findElements(By.xpath("<a>"));
-        int linkCount = links.size();
-        System.out.println(driver.getCurrentUrl()+ " sayfasındaki toplam link sayısı = "+ linkCount +"'dir");
+        //By.partialLinkText
+        //ADDRESSES Link
+        WebElement addressPartialLink = driver.findElement(By.partialLinkText("esse"));
+        String actualAddressPartialLinkText = addressPartialLink.getText();
+        System.out.println("ADRESSES PARTIAL LINK TEST :"+actualAddressPartialLinkText);
+        // Sign out link
+        WebElement signOutPartialLink = driver.findElement(By.partialLinkText("out"));
+        String signOutPartialLinkText = signOutPartialLink.getText();
+        System.out.println(signOutPartialLinkText);
 
+        //Sayfadaki toplam link sayisini bulun ve bu linkleri konsolda yazdirin
+        //findElement(); methodu yalnizca tek bir elementi locate icin kullanilir. String return eder
+        //findElement(); methodu birden fazla element return eder. List<WebElement>
+
+        List<WebElement> listOfWebElement = driver.findElements(By.tagName("a"));
+        System.out.println("Bu web sayfasinda "+listOfWebElement.size()+" tane link vardir.");
     }
 }
